@@ -47,5 +47,9 @@ namespace GestionLibros.WinForms
             await CargarLibrosAsync();
         }
 
+        private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -42,6 +42,7 @@
             dataGridViewLibros.RowTemplate.Height = 33;
             dataGridViewLibros.Size = new Size(776, 261);
             dataGridViewLibros.TabIndex = 0;
+            dataGridViewLibros.CellContentClick += dataGridViewLibros_CellContentClick;
             // 
             // btnCargarLibros
             // 
