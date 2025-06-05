@@ -11,7 +11,6 @@ namespace GestionLibros.API.Data
         }
 
         public DbSet<Libro> Libros { get; set; } 
-        holaa
     }
 }
 
