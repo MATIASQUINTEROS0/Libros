@@ -30,6 +30,13 @@
         {
             dataGridViewLibros = new DataGridView();
             btnCargarLibros = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            txtTitulo = new TextBox();
+            txtAutor = new TextBox();
+            txtAnio = new TextBox();
+            btnAgregarLibro = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLibros).BeginInit();
             SuspendLayout();
             // 
@@ -40,7 +47,7 @@
             dataGridViewLibros.Name = "dataGridViewLibros";
             dataGridViewLibros.RowHeadersWidth = 62;
             dataGridViewLibros.RowTemplate.Height = 33;
-            dataGridViewLibros.Size = new Size(776, 261);
+            dataGridViewLibros.Size = new Size(776, 216);
             dataGridViewLibros.TabIndex = 0;
             dataGridViewLibros.CellContentClick += dataGridViewLibros_CellContentClick;
             // 
@@ -54,11 +61,78 @@
             btnCargarLibros.UseVisualStyleBackColor = true;
             btnCargarLibros.Click += button1_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(21, 333);
+            label1.Name = "label1";
+            label1.Size = new Size(56, 25);
+            label1.TabIndex = 2;
+            label1.Text = "Titulo";
+            label1.Click += label1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(21, 382);
+            label2.Name = "label2";
+            label2.Size = new Size(57, 25);
+            label2.TabIndex = 3;
+            label2.Text = "Autor";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(21, 428);
+            label3.Name = "label3";
+            label3.Size = new Size(45, 25);
+            label3.TabIndex = 4;
+            label3.Text = "Año";
+            label3.Click += label3_Click;
+            // 
+            // txtTitulo
+            // 
+            txtTitulo.Location = new Point(83, 327);
+            txtTitulo.Name = "txtTitulo";
+            txtTitulo.Size = new Size(150, 31);
+            txtTitulo.TabIndex = 5;
+            // 
+            // txtAutor
+            // 
+            txtAutor.Location = new Point(84, 376);
+            txtAutor.Name = "txtAutor";
+            txtAutor.Size = new Size(150, 31);
+            txtAutor.TabIndex = 6;
+            // 
+            // txtAnio
+            // 
+            txtAnio.Location = new Point(83, 422);
+            txtAnio.Name = "txtAnio";
+            txtAnio.Size = new Size(150, 31);
+            txtAnio.TabIndex = 7;
+            // 
+            // btnAgregarLibro
+            // 
+            btnAgregarLibro.Location = new Point(83, 480);
+            btnAgregarLibro.Name = "btnAgregarLibro";
+            btnAgregarLibro.Size = new Size(151, 34);
+            btnAgregarLibro.TabIndex = 8;
+            btnAgregarLibro.Text = "Agregar Libro";
+            btnAgregarLibro.UseVisualStyleBackColor = true;
+            btnAgregarLibro.Click += btnAgregarLibro_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1089, 621);
+            Controls.Add(btnAgregarLibro);
+            Controls.Add(txtAnio);
+            Controls.Add(txtAutor);
+            Controls.Add(txtTitulo);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(btnCargarLibros);
             Controls.Add(dataGridViewLibros);
             Name = "Form1";
@@ -66,11 +140,19 @@
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewLibros).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridViewLibros;
         private Button btnCargarLibros;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private TextBox txtTitulo;
+        private TextBox txtAutor;
+        private TextBox txtAnio;
+        private Button btnAgregarLibro;
     }
 }
