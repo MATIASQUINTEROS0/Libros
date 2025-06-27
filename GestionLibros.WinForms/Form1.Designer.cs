@@ -37,6 +37,8 @@
             txtAutor = new TextBox();
             txtAnio = new TextBox();
             btnAgregarLibro = new Button();
+            btnModificar = new Button();
+            btnEliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLibros).BeginInit();
             SuspendLayout();
             // 
@@ -121,11 +123,33 @@
             btnAgregarLibro.UseVisualStyleBackColor = true;
             btnAgregarLibro.Click += btnAgregarLibro_Click;
             // 
+            // btnModificar
+            // 
+            btnModificar.Location = new Point(431, 331);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(177, 34);
+            btnModificar.TabIndex = 9;
+            btnModificar.Text = "Modificar Libro";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(432, 382);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(176, 34);
+            btnEliminar.TabIndex = 10;
+            btnEliminar.Text = "Eliminar Libro";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1089, 621);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnModificar);
             Controls.Add(btnAgregarLibro);
             Controls.Add(txtAnio);
             Controls.Add(txtAutor);
@@ -154,5 +178,7 @@
         private TextBox txtAutor;
         private TextBox txtAnio;
         private Button btnAgregarLibro;
+        private Button btnModificar;
+        private Button btnEliminar;
     }
 }

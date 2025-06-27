@@ -7,6 +7,7 @@ namespace GestionLibros.WinForms
 {
     public partial class Form1 : Form
     {
+        private int libroSeleccionadoId = -1;
         public Form1()
         {
             InitializeComponent();
@@ -52,7 +53,16 @@ namespace GestionLibros.WinForms
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dataGridViewLibros.Rows[e.RowIndex];
 
+                txtTitulo.Text = fila.Cells["Titulo"].Value.ToString();
+                txtAutor.Text = fila.Cells["Autor"].Value.ToString();
+                txtAnio.Text = fila.Cells["Anio"].Value.ToString();
+
+                libroSeleccionadoId = Convert.ToInt32(fila.Cells["Id"].Value);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -126,6 +136,71 @@ namespace GestionLibros.WinForms
         {
 
         }
+
+        private async void btnEliminar_Click(object sender, EventArgs e)
+
+        {
+            if (libroSeleccionadoId == -1)
+            {
+                MessageBox.Show("Seleccione un libro primero.");
+                return;
+            }
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7040/");
+                var response = await client.DeleteAsync($"api/libros/{libroSeleccionadoId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Libro eliminado correctamente.");
+                    await CargarLibrosAsync(); // Recarga la tabla
+                    libroSeleccionadoId = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el libro.");
+                }
+            }
+        }
+
+        private async void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (libroSeleccionadoId == -1)
+            {
+                MessageBox.Show("Seleccione un libro para modificar.");
+                return;
+            }
+
+            var libroModificado = new
+            {
+                Id = libroSeleccionadoId,
+                Titulo = txtTitulo.Text,
+                Autor = txtAutor.Text,
+                Anio = int.TryParse(txtAnio.Text, out int anio) ? anio : 0
+            };
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7040/");
+                var json = JsonSerializer.Serialize(libroModificado);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync($"api/libros/{libroSeleccionadoId}", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Libro modificado correctamente.");
+                    await CargarLibrosAsync();
+                    libroSeleccionadoId = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Error al modificar el libro.");
+                }
+            }
+        }
+    
     }
 
 }
